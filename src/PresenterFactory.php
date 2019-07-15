@@ -62,6 +62,7 @@ class PresenterFactory extends BaseFactory
 	public function getPresenterClass(&$name)
 	{
 		$args = new EventArgsGetPresenter($name, $this->getMapping());
+		Events::GET_PRESENTER;//link
 		$this->onGetPresenter($args);
 		$name = $args->getName();
 		if ($args->getPresenter()) {
@@ -78,6 +79,7 @@ class PresenterFactory extends BaseFactory
 	public function formatPresenterClass($presenter)
 	{
 		$args = new EventArgsFormatPresenter($presenter, NULL, $this->getMapping());
+		Events::FORMAT_PRESENTER_CLASS;//link
 		$this->onFormatPresenterClass($args);
 		$class = $args->getClass();
 		if ($class !== NULL) {
@@ -94,6 +96,7 @@ class PresenterFactory extends BaseFactory
 	public function unformatPresenterClass($class)
 	{
 		$args = new EventArgsUnFormatPresenter($class, NULL, $this->getMapping());
+		Events::UN_FORMAT_PRESENTER_CLASS;//link
 		$this->onUnFormatPresenterClass($args);
 		$mapping = $args->getClassMapping();
 		if ($mapping !== NULL) {
